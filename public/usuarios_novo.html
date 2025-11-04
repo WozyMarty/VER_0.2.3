@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Usuário — Almoxarifado</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <div class="logo">T</div>
+        <div class="company">
+          <div class="title">TECNOTOOLING</div>
+        </div>
+      </div>
+      <div class="header-center"><h1>CRIAR USUÁRIO</h1></div>
+      <div class="header-actions">
+        <button class="icon-btn" data-action="logout" title="Sair">Sair</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="card usuarios-card" aria-label="Formulário criar usuário">
+        <div class="usuarios-card-inner">
+          <div class="card-head">
+            <h2>Novo Usuário</h2>
+            <p class="lead">Crie um usuário com papel apropriado. Apenas admins podem acessar esta página.</p>
+          </div>
+
+          <form id="form-user" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="username">Nome de usuário</label>
+                <input id="username" name="username" type="text" required placeholder="Ex.: jdoe">
+              </div>
+
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="Ex.: jdoe@empresa.com">
+              </div>
+
+              <div class="field">
+                <label for="password">Senha</label>
+                <input id="password" name="password" type="password" required placeholder="No mínimo 8 caracteres">
+                <div class="help">Dica: use uma senha forte (8+ caracteres).</div>
+              </div>
+
+              <div class="field">
+                <label for="role">Papel</label>
+                <select id="role" name="role">
+                  <option value="user">Usuário (user)</option>
+                  <option value="admin">Administrador (admin)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="actions actions-right">
+              <button type="button" class="btn cancel" id="btn-cancel">Cancelar</button>
+              <button type="submit" class="btn save">Criar</button>
+            </div>
+
+            <p id="msg" class="help" style="min-height:1.2em;margin-top:10px"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script src="/js/usuarios_novo.js"></script>
+    <script src="/js/common.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estoque</title>
+
+    <!---DataTables--->
+    <link rel="stylesheet" href="/lib/datatables/dataTables.css" />
+    <!---DataTables--->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/table.css">
+  </head>
+  <style>
+  body{
+    background-color: #c2c6d3;
+  }
+  </style>
+
+<body>
+  <header>
+        <div class="logo">T</div>
+        
+    <h1 style="color:#ffffff">ALMOXARIFADO</h1>
+    <div class="icons">
+  <div class="home-icon"></div>
+      <div class="user-icon"></div>
+      <button class="icon-btn" title="Sair" data-action="logout" style="margin-left:8px; height:36px;">Sair</button>
+    </div>
+  </header>
+
+  <div class="table-card">
+    <table id="tabela" class="table">
+    <thead>
+      <tr>
+        <th width="20">ID</th>
+        <th width="100">Código</th>
+        <th width="100">Nome</th>
+        <th width="100">P/N</th>
+        <th width="100">S/N</th>
+        <th width="100">Categoria</th>
+        <th width="100">Setor</th>
+        <th width="50">Quantidade</th>
+        <th width="50">Qtd Min.</th>
+        <th width="50">Peso (valor)</th>
+        <th width="50">Peso (tipo)</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    </table>
+
+    <div class="table-controls">
+      <button id="resetCols" class="btn-reset" type="button">Reset column widths</button>
+    </div>
+  </div>
+
+
+
+  
+  
+    <!--DataTables-->
+  <script src="/lib/jquery/jquery-3.7.1.min.js"></script>
+  <script src="/lib/datatables/dataTables.js"></script>
+  <script src="/js/estoque.js"></script>
+  <script src="/js/colResize.js"></script>
+  <script src="/js/common.js"></script>
+</body>
+</html>

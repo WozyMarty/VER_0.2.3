@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Cadastro de Material — Almoxarifado</title>
+  <style>
+  body{
+    background-color: #c2c6d3;
+  }
+    :root{
+      --brand-turquoise:#0D5377;
+      --brand-navy:#1A3247;
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --radius:10px;
+      --card-bg:linear-gradient(135deg, #eaf3fa 0%, #b3d0e6 60%, #e0e7ef 100%);
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      background:var(--bg);
+      color:var(--brand-navy);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+
+    /* Header */
+    header{
+      height:72px;
+      display:flex;
+      align-items:center;
+      padding:10px 20px;
+      gap:12px;
+      background: linear-gradient(180deg,var(--brand-turquoise), rgba(13,83,119,0.92));
+      color:#fff;
+      position:relative;
+      box-shadow:0 6px 18px rgba(13,83,119,0.12);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{ width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#0b4663,#0f5979);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700 }
+    .company{display:flex;flex-direction:column}
+    .company .name{font-weight:700;font-size:14px;color:rgba(255,255,255,0.95)}
+    .company .sub{font-size:11px;color:rgba(255,255,255,0.9);text-transform:uppercase}
+
+    /* Centered title */
+    .header-center{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      pointer-events:none;
+    }
+    .header-center h1{margin:0;color:#fff;font-size:20px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase}
+
+    /* Header actions */
+    .header-actions{ margin-left:auto; display:flex; gap:10px; align-items:center; z-index:5 }
+    .icon-btn{ width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.12);border:none;cursor:pointer }
+    .icon-btn img, .icon-btn svg{ width:20px;height:20px; display:block }
+
+    /* Main content area */
+    main{
+      flex:1;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:32px;
+    }
+    .card{
+      width:100%;
+      max-width:980px;
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:22px;
+      box-shadow: 0 12px 30px rgba(13,83,119,0.06);
+      border:1px solid rgba(13,83,119,0.06);
+    }
+    .card h2{ margin:0 0 10px 0; color:var(--brand-navy); font-size:20px }
+    .card p.lead{ margin:0 0 18px 0; color:var(--muted); font-size:13px }
+
+    /* Form layout */
+    form { display:flex; flex-direction:column; gap:14px }
+    .grid {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px 18px;
+    }
+    label{ display:block; font-size:13px; font-weight:700; color:var(--brand-navy); margin-bottom:6px }
+    input[type="text"], input[type="number"], input[type="date"], select, textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(10,20,30,0.08);
+      background:#fff;
+      font-size:14px;
+      color:var(--brand-navy);
+    }
+    textarea{ min-height:100px; resize:vertical }
+
+    /* Full width rows */
+    .full{ grid-column: 1 / -1 }
+
+    /* Actions */
+    .actions{ display:flex; gap:12px; justify-content:flex-end; margin-top:6px }
+    .btn{
+      padding:10px 16px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      border: none;
+    }
+    .btn.cancel{ background:#33343D; color:#fff; }
+    .btn.save{ background: linear-gradient(180deg,var(--brand-turquoise), #0A4660); color:#fff; }
+
+    /* small helper text */
+    .help{ font-size:12px; color:var(--muted); margin-top:6px }
+
+    @media (max-width:880px){
+      .grid{ grid-template-columns: 1fr }
+      .header-center h1{ font-size:18px }
+      .card{ padding:18px }
+    }
+  </style>
+  </head>
+
+  <body>
+  <header>
+    <div class="brand" aria-hidden="false">
+      <div class="logo">T</div>
+      <div class="company" aria-hidden="true">
+        <div class="title">TECNOTOOLING</div>
+        <div class="sub">Smart Factory Solutions</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="header-center" aria-hidden="true">
+      <h1>CADASTRO</h1>
+    </div>
+
+    <div class="header-actions" aria-hidden="false">
+      <button class="icon-btn" type="button" title="Home" id="btn-home">
+        <!-- simple house svg -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11.5L12 4l9 7.5"></path>
+          <path d="M9 21V12h6v9"></path>
+        </svg>
+      </button>
+
+      <button class="icon-btn" type="button" title="Configurações" id="btn-config">
+        <!-- simple gear svg -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7z"></path>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06"></path>
+        </svg>
+      </button>
+      <button class="icon-btn" type="button" title="Sair" data-action="logout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 17l5-5-5-5"></path>
+          <path d="M21 12H9"></path>
+          <path d="M9 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="card" aria-label="Formulário de cadastro">
+      <h2>Cadastro de Material</h2>
+      <p class="lead">Preencha os dados do item. Campos marcados com * são obrigatórios.</p>
+
+      <form id="form" novalidate>
+        <div class="grid">
+          <div>
+            <label for="codigo">Código do Item *</label>
+            <input id="codigo" name="codigo" type="text" placeholder="Ex.: CÓD123" required>
+          </div>
+
+          <div>
+            <label for="nome">Nome / Descrição do Item *</label>
+            <input id="nome" name="nome" type="text" placeholder="Nome do item" required>
+          </div>
+
+          <div>
+            <label for="categoria">Tipo de Item *</label>
+            <select id="categoria" name="tipo" required>
+              <option value="">Selecione o tipo</option>
+              <option value="consumivel">Consumível</option>
+              <option value="permanente">Permanente</option>
+              <option value="materia_prima">Matéria-prima</option>
+              <option value="embalagem">Embalagem</option>
+              <option value="ferramenta">Ferramenta</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="unidade">Unidade de Medida (U.M.) *</label>
+            <select id="peso_tipo" name="peso_tipo" required>
+              <option value="">Selecione a unidade</option>
+              <option value="un">un (unidade)</option>
+              <option value="pc">pc (peça)</option>
+              <option value="kg">kg (quilograma)</option>
+              <option value="m">m (metro)</option>
+              <option value="l">l (litro)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="quantidade">Quantidade Inicial em Estoque *</label>
+            <input id="quantidade" name="quant_inicial" type="number" min="0" step="1" placeholder="0" required>
+          </div>
+
+          <div class="admin-only">
+            <label for="qty_min">Quantidade Mínima</label>
+            <input id="qty_min" name="qty_min" type="number" min="0" step="1" placeholder="0">
+          </div>
+
+          <div>
+            <label for="localizacao">Localização Física *</label>
+            <input id="localizacao" name="localizacao" type="text" placeholder="Ex.: Prateleira A3" required>
+          </div>
+
+          <div>
+            <label for="pn">P/N</label>
+            <input id="pn" name="pn" type="text" placeholder="Part Number">
+          </div>
+
+          <div>
+            <label for="sn">S/N</label>
+            <input id="sn" name="sn" type="text" placeholder="Serial Number">
+          </div>
+
+          <div>
+            <label for="peso_valor">Peso unitário (por U.M.)</label>
+            <input id="peso_valor" name="peso_valor" type="number" min="0" step="0.001" placeholder="Ex.: 0.150">
+          </div>
+
+          <div>
+            <label for="setor">Setor / Departamento *</label>
+            <input id="setor" name="setor" type="text" placeholder="Ex.: Manutenção" required>
+          </div>
+
+          <div class="full">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" name="observacoes" placeholder="Observações sobre o item"></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn cancel" id="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn save" id="btn-save">Salvar</button>
+        </div>
+        <p class="help">Os dados serão validados antes do envio.</p>
+        <p id="msg" class="help" style="min-height:1.2em"></p>
+      </form>
+    </section>
+  </main>
+  
+    <script src="/js/cadastrar.js"></script>
+  </body>
+  <script src="/js/common.js"></script>
+</html>

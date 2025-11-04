@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Histórico</title>
+
+    <!---DataTables--->
+    <link rel="stylesheet" href="/lib/datatables/dataTables.css" />
+    <!---DataTables--->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/table.css">
+  <style>
+  body{
+    background-color: #c2c6d3;
+  }
+  </style>
+  </head>
+<body>
+    <header>
+          <div class="logo">T</div>
+          
+        <h1 style="color:#ffffff">ALMOXARIFADO</h1>
+      <div class="icons">
+        <div class="home-icon"></div>
+        <div class="user-icon"></div>
+        <button class="icon-btn" title="Sair" data-action="logout" style="margin-left:8px; height:36px;">Sair</button>
+      </div>
+    </header>
+
+    <main>
+    <div class="table-card">
+        <table id="tabela" class="table">
+      <thead>
+        <tr>
+            <th width="100">Tipo</th>
+            <th width="30">ID</th>
+            <th width="150">Produto</th>
+            <th width="150">P/N</th>
+            <th width="150">S/N</th>
+            <th width="150">Categoria</th>
+            <th width="150">Setor</th>
+            <th width="150">Peso (valor)</th>
+            <th width="150">Peso (tipo)</th>
+            <th width="150">Qtd</th>
+            <th width="150">Qtd Min</th>
+            <th width="50">Data</th>
+          </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="table-controls">
+      <button id="resetCols" class="btn-reset" type="button">Reset column widths</button>
+    </div>
+    </div>
+  </main>
+    <div class="container"></div>
+  
+    <!-- historia scripts moved to /js/historico.js for CSP compliance -->
+  
+    <!--DataTables-->
+  <script src="/lib/jquery/jquery-3.7.1.min.js"></script>
+  <script src="/lib/datatables/dataTables.js"></script>
+  <script src="/js/historico.js"></script>
+  <script src="/js/colResize.js"></script>
+  <script src="/js/common.js"></script>
+</body>
+</html>

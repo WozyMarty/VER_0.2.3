@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- login logic moved to external JS to comply with CSP -->
+  <title>Login — TecnoTooling</title>
+  <style>
+    body{
+    background-color: #c2c6d3;
+  }
+    :root{
+      --brand-turquoise:#0D5377;
+      --brand-navy:#1A3247;
+      --card-bg:#fbfdff;
+      --muted:#6b7280;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      background: linear-gradient(180deg,#f7fbfd,#f3f7fa);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      color:var(--brand-navy);
+    }
+
+    .login-shell{
+      width:100%;
+      max-width:920px;
+      display:grid;
+      grid-template-columns:420px 1fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    /* Brand panel */
+    .brand-panel{
+      background: linear-gradient(180deg,var(--brand-turquoise),rgba(13,83,119,0.92));
+      color:#fff;
+      border-radius:12px;
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      box-shadow:0 12px 36px rgba(13,83,119,0.08);
+    }
+    .brand-top{ display:flex; gap:12px; align-items:center; width:100% }
+
+    /* logo-box: fixed square */
+    .logo-box {
+      width:64px;
+      height:64px;
+      border-radius:10px;
+      background: rgba(13,83,119,1);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:8px;
+      flex:0 0 64px;
+      overflow:hidden;
+      box-shadow: 0 6px 18px rgba(13,83,119,0.08);
+    }
+    .logo-img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .company{ display:flex; flex-direction:column }
+    .company .name{ font-weight:800; font-size:18px; letter-spacing:0.3px }
+    .company .sub{ font-size:11px; opacity:0.95; text-transform:uppercase; margin-top:2px }
+
+    .brand-panel h1{ margin:0; font-size:20px; font-weight:800; text-transform:uppercase }
+    .brand-panel p{ margin:0; color: rgba(255,255,255,0.92); font-size:14px; line-height:1.4 }
+    .brand-panel .note{ margin-top:auto; font-size:12px; opacity:0.9 }
+
+    /* Card (form) */
+    .card{
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:28px;
+      box-shadow:0 12px 30px rgba(13,83,119,0.06);
+      border:1px solid rgba(13,83,119,0.06);
+    }
+    .card h2{ margin:0 0 8px 0; color:var(--brand-navy); font-size:20px }
+    .card p.lead{ margin:0 0 18px 0; color:var(--muted); font-size:13px }
+
+    form{ display:flex; flex-direction:column; gap:12px }
+    label{ display:block; font-size:13px; font-weight:700; color:var(--brand-navy); margin-bottom:6px }
+    input[type="text"], input[type="password"]{
+      width:100%; padding:12px 14px; border-radius:8px;
+      border:1px solid rgba(10,20,30,0.08); background:#fff; font-size:14px; color:var(--brand-navy);
+    }
+
+    .password-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
+
+    .password-toggle:hover {
+      color: var(--brand-turquoise);
+      background: rgba(13,83,119,0.05);
+    }
+
+    .password-toggle svg {
+      display: block;
+    }
+
+    .row{ display:flex; gap:12px; align-items:center; }
+    .row .remember{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted) }
+    .forgot{ margin-left:auto; font-size:13px; color:var(--brand-turquoise); cursor:pointer; text-decoration:none }
+
+    .actions{ display:flex; gap:12px; margin-top:8px; align-items:center }
+    .btn{
+      padding:10px 16px; border-radius:10px; font-weight:700; cursor:pointer; border:none;
+    }
+    .btn.primary{ background: linear-gradient(180deg,var(--brand-turquoise), #0A4660); color:#fff; }
+    .btn.ghost{ background:transparent; color:var(--brand-navy); border:1px solid rgba(13,83,119,0.08) }
+
+    .small{ font-size:12px; color:var(--muted); margin-top:8px }
+
+    @media (max-width:920px){
+      .login-shell{ grid-template-columns: 1fr; max-width:560px; }
+      .brand-panel{ order:2; flex-direction:row; align-items:center; justify-content:space-between; padding:18px }
+      .brand-panel h1{ display:none }
+      .logo-box{ width:56px; height:56px; padding:6px; flex:0 0 56px }
+    }
+    @media (max-width:420px){
+      .logo-box{ width:48px; height:48px; padding:5px; flex:0 0 48px }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-shell" role="main">
+    <aside class="brand-panel" aria-label="TecnoTooling">
+      <div class="brand-top">
+        <div class="logo-box" aria-hidden="true">
+          <img class="logo-img" alt="TecnoTooling" src="/imgs/logo.png">
+        </div>
+        <div class="company">
+          <div class="name">TECNOTOOLING</div>
+          <div class="sub">Smart Factory Solutions</div>
+        </div>
+      </div>
+
+      <h1>Bem-vindo</h1>
+      <p>Entre com suas credenciais para acessar o sistema de Almoxarifado.</p>
+      <div class="note">Se você não tem conta, contate o administrador.</div>
+    </aside>
+
+    <section class="card" aria-label="Login">
+      <h2>Login</h2>
+      <p class="lead">Informe seu usuário e senha.</p>
+
+      <form id="login-form" autocomplete="on" novalidate>
+        <div>
+          <label for="usuario">Usuário</label>
+          <input id="usuario" name="usuario" type="text" placeholder="Seu usuário" required>
+        </div>
+
+        <div class="password-field">
+          <label for="senha">Senha</label>
+          <div class="password-input-wrapper">
+            <input id="senha" name="senha" type="password" placeholder="Sua senha" required>
+            <button type="button" id="toggle-password" class="password-toggle" aria-label="Mostrar senha">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="row" aria-hidden="false">
+          <label class="remember"><input type="checkbox" id="remember" name="remember"> Lembrar-me</label>
+          <a class="forgot" href="#" id="forgot-link">Esqueceu sua senha?</a>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn ghost" id="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn primary" id="btn-login">Acessar</button>
+        </div>
+
+        <div class="small">Ao entrar você será redirecionado para o painel do Almoxarifado.</div>
+        <!-- Inline visible message for debugging/login feedback -->
+        <div id="login-msg" role="alert" style="color:#b91c1c;margin-top:12px;font-weight:700;display:none"></div>
+      </form>
+    </section>
+  </div>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>

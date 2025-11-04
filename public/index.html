@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Almoxarifado — TecnoTooling</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+
+  </head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="brand" aria-hidden="false">
+      <div class="logo">T</div>
+      <div class="company" aria-hidden="true">
+        <div class="title">TECNOTOOLING</div>
+        <div class="sub">Smart Factory Solutions</div>
+      </div>
+    </div>
+
+    <div class="header-center" role="heading" aria-level="1">
+      <h1>ALMOXARIFADO</h1>
+    </div>
+
+    <div class="header-actions" aria-hidden="false">
+      <button class="icon-btn" aria-label="Home" title="Home" type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color: #fff;">
+          <path d="M3 11.5L12 4l9 7.5" stroke="currentColor"></path>
+          <path d="M9 21V12h6v9" stroke="currentColor"></path>
+        </svg>
+      </button>
+
+      <button class="icon-btn" aria-label="Configurações" title="Configurações" type="button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color: #fff;">
+          <path d="M12 15.5A3.5 3.5 0 1 0 12 8.5a3.5 3.5 0 0 0 0 7z" stroke="currentColor"></path>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09c.67 0 1.24-.4 1.51-1a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06c.46.46 1.07.69 1.69.61.62-.08 1.15-.44 1.45-1.02.3-.58.23-1.24-.18-1.72L6.6 4.6" stroke="currentColor"></path>
+        </svg>
+      </button>
+
+      <button class="icon-btn" aria-label="Sair" title="Sair" type="button" data-action="logout">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color: #fff;">
+          <path d="M16 17l5-5-5-5"></path>
+          <path d="M21 12H9"></path>
+          <path d="M9 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Container principal -->
+  <main>
+    <div class="wrapper" role="main" aria-labelledby="grid-title">
+      <div class="intro">
+        <h2 id="grid-title">Bem-vindo ao Almoxarifado</h2>
+        <p>Selecione uma opção para começar</p>
+      </div>
+
+      <!-- Admin-only central create-user button -->
+      <div class="admin-center admin-only" style="text-align:center;margin:18px 0;">
+        <a href="/usuarios/novo" id="btn-create-user" class="btn primary create-user" role="button" aria-label="Criar usuário">Criar Usuário</a>
+      </div>
+
+      <div class="grid" role="list" aria-label="Opções do almoxarifado">
+  <button class="btn primary" role="listitem" data-action="estoque" aria-label="Estoque">
+          <div class="left">E</div>
+          <div class="content">
+            <div class="label">Estoque</div>
+            <div class="desc">Ver e ajustar saldos</div>
+          </div>
+        </button>
+
+  <button class="btn secondary" role="listitem" data-action="cadastrar" aria-label="Cadastrar">
+          <div class="left">+</div>
+          <div class="content">
+            <div class="label">Cadastrar</div>
+            <div class="desc">Registrar novo item</div>
+          </div>
+        </button>
+
+  <button class="btn secondary" role="listitem" data-action="baixa" aria-label="Baixa">
+          <div class="left">−</div>
+          <div class="content">
+            <div class="label">Baixa</div>
+            <div class="desc">Registrar saída / consumo</div>
+          </div>
+        </button>
+
+  <button class="btn primary" role="listitem" data-action="historico" aria-label="Histórico">
+          <div class="left">H</div>
+          <div class="content">
+            <div class="label">Histórico</div>
+            <div class="desc">Movimentações e auditoria</div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Dashboard JS (external to comply with CSP) -->
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/common.js"></script>
+</body>
+</html>
