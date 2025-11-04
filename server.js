@@ -13,6 +13,7 @@ import speakeasy from "speakeasy";
 import qrcode from "qrcode";
 import moment from "moment";
 import helmet from "helmet";
+import { createServerlessHandler } from "@vercel/node";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -197,11 +198,7 @@ const requireAdmin = async (req, res, next) => {
 app.use(express.static(path.join(__dirname, "public"), { index: false }));
 app.use('/lib', express.static(path.join(__dirname, 'lib')));
 
-const PORT = process.env.PORT || 6060;
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
-});
+
 
 
 
